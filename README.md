@@ -118,3 +118,25 @@ graph TD
 
 ## 📖 Demo Script
 The spoken narration script for demonstration can be found here: [DEMO_SCRIPT.txt](file:///c:/Users/N%20Likhith/Downloads/adk-workspace/med-companion/DEMO_SCRIPT.txt)
+
+---
+
+## 🛠️ Troubleshooting
+
+1. **`429 RESOURCE_EXHAUSTED` (Rate Limits)**
+   * **Cause:** The Gemini API free tier limits requests per minute.
+   * **Fix:** We use `gemini-2.5-flash-lite` in the `.env` file to leverage higher daily quotas. If you hit it, wait 30 seconds and retry.
+2. **`NameError: Fail to load 'app' module`**
+   * **Cause:** Missing Python package imports or code syntax issues.
+   * **Fix:** Run `uv sync` to ensure all dependencies are installed.
+3. **Playground UI does not reflect code changes**
+   * **Cause:** Windows disables hot-reloading for safety within ADK.
+   * **Fix:** Kill the active server processes and restart them:
+     ```powershell
+     Get-Process -Id (Get-NetTCPConnection -LocalPort 18081, 8090 -ErrorAction SilentlyContinue).OwningProcess | Stop-Process -Force
+     make playground
+     ```
+
+---
+
+
