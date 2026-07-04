@@ -1,0 +1,47 @@
+[0:00 — HOOK]
+Hello everyone. Today, I am excited to present Med-Companion, an intelligent and secure clinical assistant designed to help patients manage complex medication routines and avoid dangerous drug-to-drug interactions.
+
+(pause)
+
+[0:20 — WHAT IT IS]
+Med-Companion is built as part of the Agents for Good track. It acts as a reliable clinical safety guard, taking the confusion out of prescription routines by transforming raw user queries into structured hourly schedules, safety checks, and simplified patient guidance.
+
+(pause)
+
+[0:40 — SHOW THE BANNER]
+(show assets/cover_page_banner.png)
+As you can see on our cover banner, Med-Companion is designed with safety, intelligence, and patient-centric harmony at its core, combining advanced medical circuit tracking with secure AI agents.
+
+(pause)
+
+[1:00 — ARCHITECTURE]
+(show assets/architecture_diagram.png)
+Let's walk through the architecture of how this agent operates. When a patient submits a request, it first enters our Security Checkpoint. This node handles PII scrubbing, prompt injection prevention, and medical abuse checks. If cleared, the query proceeds to our central Orchestrator Agent. The orchestrator coordinates specialized tasks by calling the scheduler_agent and interaction_agent as functional tools. The interaction_agent queries our Model Context Protocol server, which acts as a clinical database. If the MCP check returns a severe warning, our Workflow pauses at the Human-in-the-Loop gate, yielding a request for user confirmation. Once approved, the flow resumes and routes to the explainer_agent, which translates the technical findings into simple language before delivering the final response.
+
+(pause)
+
+[2:00 — LIVE DEMO]
+(switch to playground at localhost:18081)
+Let's see this in action. I will input our first test case: "I am currently taking Aspirin and Ibuprofen. Can you check for potential warnings and format my daily schedule?" Since both medications are NSAIDs, our safety agent queries the MCP database and flags a severe interaction.
+
+(pause)
+
+Notice how the playground immediately intercepts the flow and presents an interactive form. It displays the severe warning and asks for our acknowledgment. I will check the Approved box and click Submit.
+
+(pause)
+
+Now, the workflow resumes. It forwards the safety warning and formatted schedule to our explainer_agent. As a result, we receive a warm, consolidated schedule organization by morning, afternoon, evening, and bedtime, alongside an easy-to-understand explanation of why taking two NSAIDs together can cause stomach irritation and bleeding risk.
+
+(pause)
+
+If I were to input a prompt injection or unsafe advice query, our Security Checkpoint would block it immediately, ensuring the core agent and LLM resources are never exposed.
+
+(pause)
+
+[3:00 — SECURITY & MCP]
+This secure design ensures patient privacy by redacting sensitive data like SSNs or phone numbers before any LLM processing. Furthermore, our MCP server keeps our agents clinically grounded by pulling actual interaction profiles and FDA dosage guidelines from a local pharmacology database.
+
+(pause)
+
+[3:30 — IMPACT / CLOSE]
+Med-Companion empowers patients to take charge of their health safely. It prevents accidental double-dosing and clinical anxiety by turning complex prescription sheets into clear, reassuring patient guides. Thank you for your time.
